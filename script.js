@@ -110,8 +110,8 @@ const steps = [
     { text: 'would you like to open your surprise?', yes: 'Yes',            no: 'No' },
     { text: 'are you sure?',                         yes: "Yes, I'm sure",  no: 'Not yet' },
     { text: 'really sure? like, really really?',     yes: 'Really sure',    no: 'Hmm...' },
-    { text: 'okay, last one. no take-backs, langga.', yes: 'No take-backs', no: 'Wait' },
-    { text: "fine, fine, i'll stop teasing. ready?",  yes: "I'm ready",      no: 'Maybe later' }
+    { text: 'okay, last na lg. sure kana gd?.', yes: 'Yes sure!!!', no: 'Wait' },
+    { text: "fine, fine, are you ready baby?",  yes: "I'm ready",      no: 'Maybe later' }
 ];
 const dodgeLines = [
     'nice try.',
