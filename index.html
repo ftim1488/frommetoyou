@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Angelica | A Little Something For You</title>
+
+<!-- Social Preview -->
+<meta property="og:title" content="Happy Birthday, Angelica!">
+<meta property="og:description" content="A little something I made just for you.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ftim1488.github.io/frommetoyou/">
+<meta property="og:image" content="https://ftim1488.github.io/frommetoyou/assets/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A birthday surprise for Angelica">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Italianno&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+/* Always start each visit/refresh at the top of the page,
+    instead of the browser restoring the last scroll position. */
+if ('scrollRestoration' in history) {
+history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+</script>
+</head>
+<body>
+
+<!-- ============ SVG SPRITE / CREST ============ -->
+<!-- <svg class="sprite" aria-hidden="true">
+<symbol id="crest" viewBox="0 0 200 200">
+<circle class="crest-ring" cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<circle class="crest-ring-inner" cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="1"/>
+<g class="crest-image" fill="currentColor"><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(0 100 100)"/><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(45 100 100)"/><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(90 100 100)"/><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(135 100 100)"/><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(180 100 100)"/><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(225 100 100)"/><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(270 100 100)"/><ellipse cx="100" cy="66" rx="12" ry="34" transform="rotate(315 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(22.5 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(67.5 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(112.5 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(157.5 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(202.5 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(247.5 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(292.5 100 100)"/><ellipse cx="100" cy="76" rx="8" ry="22" opacity=".55" transform="rotate(337.5 100 100)"/><circle cx="100" cy="100" r="9" fill="#150d26"/><circle cx="100" cy="100" r="4.5"/></g>
+</symbol>
+</svg> -->
+
+<!-- ============ AMBIENT LAYERS ============ -->
+<div class="ambient" id="ambientLayer" aria-hidden="true">
+<div class="ambient-glow ambient-glow--a"></div>
+<div class="ambient-glow ambient-glow--b"></div>
+</div>
+<!-- falling hearts (above the content, works on desktop + mobile) -->
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<!-- ============ MUSIC ============ -->
+<audio id="bgMusic" loop preload="auto">
+<source src="assets/bg.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn" class="music-btn" aria-label="Toggle music" disabled>
+<svg class="music-icon music-icon--play" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M8 5v14l11-7z"/>
+</svg>
+<svg class="music-icon music-icon--pause" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="6" y="5" width="4" height="14" rx="1"/>
+    <rect x="14" y="5" width="4" height="14" rx="1"/>
+</svg>
+</button>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- ============ PRE-GATE: GIFT TEASE ============ -->
+<section id="preGate" aria-live="polite">
+<div class="pre-card" id="preCard">
+<div class="pre-gift" aria-hidden="true">
+<svg viewBox="0 0 120 120">
+<defs>
+<linearGradient id="giftBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#4c1d95"/></linearGradient>
+<linearGradient id="giftLid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#6d28d9"/></linearGradient>
+<linearGradient id="giftRibbon" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e8ff"/><stop offset="1" stop-color="#c4a1ff"/></linearGradient>
+</defs>
+<rect x="18" y="54" width="84" height="56" rx="6" fill="url(#giftBody)"/>
+<rect x="53" y="54" width="14" height="56" fill="url(#giftRibbon)"/>
+<g class="pre-gift__lid">
+<rect x="12" y="38" width="96" height="22" rx="6" fill="url(#giftLid)"/>
+<rect x="53" y="38" width="14" height="22" fill="url(#giftRibbon)"/>
+<path d="M60 38 C44 14 22 20 34 34 C40 40 54 38 60 38Z" fill="url(#giftRibbon)"/>
+<path d="M60 38 C76 14 98 20 86 34 C80 40 66 38 60 38Z" fill="url(#giftRibbon)"/>
+<circle cx="60" cy="38" r="6" fill="#c4a1ff"/>
+</g>
+</svg>
+</div>
+<p class="pre-eyebrow">A gift for you</p>
+<h2 class="pre-text" id="preText">would you like to open your surprise?</h2>
+<div class="pre-actions" id="preActions">
+<button type="button" class="pre-btn pre-btn--yes" id="preYes">Yes</button>
+<button type="button" class="pre-btn pre-btn--no" id="preNo">No</button>
+</div>
+<p class="pre-sub" id="preSub">&nbsp;</p>
+</div>
+</section>
+
+<!-- ============ MAIN CELEBRATION ============ -->
+<main id="main">
+
+<!-- side scroll nav -->
+<nav class="side-nav" aria-label="Section navigation">
+<a href="#hero" data-label="Welcome"></a>
+<a href="#story" data-label="My Letter"></a>
+<a href="#about" data-label="You"></a>
+<a href="#gallery" data-label="Gallery"></a>
+<a href="#album" data-label="Album"></a>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+<div class="hero__bg"></div>
+<div class="hero__overlay"></div>
+<svg class="hero__crest" viewBox="0 0 200 200" aria-hidden="true"><use href="#crest"/></svg>
+
+<div class="hero__content">
+    <p class="reveal eyebrow">Happy Birthday to the love of my life</p>
+    <h1 class="reveal reveal--scale hero__name">Angelica</h1>
+    <p class="reveal hero__tagline"><span class="script">Another Year</span> &amp; <span class="script">Endless Love</span></p>
+
+    <div class="reveal hero__meta">
+    <span>Celebrate</span>
+    <i class="dot"></i>
+    <span>Cherish</span>
+    <i class="dot"></i>
+    <span>Love</span>
+    </div>
+
+    <a href="#story" class="scroll-cue reveal" aria-label="Scroll to read more">
+    <span></span>
+    </a>
+</div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="section">
+<div class="section__inner about">
+    <div class="about__media reveal reveal--left">
+    <div class="frame">
+        <img src="assets/wall.png" alt="">
+    </div>
+    </div>
+
+    <div class="about__copy reveal reveal--right">
+    <p class="kicker">The One I Love</p>
+    <h2 class="heading">Beautiful Inside,<br>Loved Endlessly</h2>
+    <p class="lead">
+        You make ordinary days feel special and hard days feel possible.
+        Today isn&rsquo;t just your birthday, it&rsquo;s a reminder of how lucky
+        the world is to have you, and how lucky I am to be the one who gets to love you.
+    </p>
+    </div>
+</div>
+</section>
+
+<!-- MY LETTERS (clickable hearts) -->
+<section class="section" id="story">
+<div class="section__inner center">
+<p class="kicker reveal">My Letters To You</p>
+<h2 class="reveal heading">Every Heart Holds a Letter</h2>
+<div class="divider reveal"><span></span><svg aria-hidden="true" viewbox="0 0 200 200"><use href="#crest"></use></svg><span></span></div>
+<p class="reveal lead">
+    I wrote you a little something for every reason I love you.
+    Tap a heart to open it. there are plenty, so take your time.
+</p>
+
+<div class="heart-field reveal" id="heartField" aria-label="Clickable hearts, each one opens a letter"></div>
+
+<p class="love-progress reveal"><span id="loveOpened">0</span> / <span id="loveTotal">0</span> letters opened</p>
+<p class="love-finale" id="loveFinale">that&rsquo;s every letter, and i still have a thosand more i haven&rsquo;t written yet.<br>Happy Birthday baby koo. i love you more than these letters can explain. i hope this little letters i made for you reminds you that you are appreciated, cherished, and loved. today is your day, love, and i'm so happy that the world gets to celebrate you. happy birthday langga ko</p>
+</div>
+</section>
+
+<!-- ALBUM (favorite pictures) -->
+<section id="album" class="section">
+<div class="section__inner">
+    <p class="kicker reveal center">My Favorites</p>
+    <h2 class="reveal heading center">Pictures I Keep Coming Back To</h2>
+    <div class="divider reveal"><span></span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#crest"/></svg><span></span></div>
+    <p class="reveal lead center">a little album of my favorite pictures of you. tap any of them to see it bigger, and swipe to keep going.</p>
+
+    <div class="album" id="albumGrid" aria-label="Album of favorite pictures"></div>
+</div>
+</section>
+
+<!-- GALLERY (photo + description) -->
+<section id="gallery" class="section">
+<div class="section__inner">
+    <p class="kicker reveal center">Let Me Describe You</p>
+    <h2 class="reveal heading center">Through My Eyes</h2>
+    <div class="divider reveal"><span></span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#crest"/></svg><span></span></div>
+
+    <div class="portraits">
+    <article class="portrait">
+    <figure class="portrait__media frame reveal reveal--left" data-src="assets/img1.jpg">
+        <img src="assets/img1.jpg" alt="">
+    </figure>
+    <div class="portrait__copy reveal reveal--right">
+        <h3 class="portrait__title">my little food lover</h3>
+        <p class="portrait__text">this girl has a special way of making even the simplest parts of her day worth sharing. whether she's enjoying her favorite food or showing me what she's about to eat, there's always something endearing about the way she lets me into these little moments. she's someone who finds happiness in the simple things, and i love how a small part of her day can tell me a little more about her. if there's one thing you should know about her, it's that some of the cutest updates come with a picture of whatever she's eating.</p>
+    </div>
+    </article>
+
+    <article class="portrait portrait--flip">
+    <figure class="portrait__media frame reveal reveal--right" data-src="assets/img2.jpg">
+        <img src="assets/img2.jpg" alt="">
+    </figure>
+    <div class="portrait__copy reveal reveal--left">
+        <h3 class="portrait__title">naturally adorable</h3>
+        <p class="portrait__text">i don't think she realizes how cute she can be without even trying. sometimes it's her facial expression, sometimes it's the way she poses, and sometimes it's a random moment that somehow becomes one of my favorite pictures of her. she has a playful charm that can turn an ordinary photo into something memorable. it's not always about the pose or the angle. it's simply her personality showing through, making even the most unplanned pictures worth keeping.</p>
+    </div>
+    </article>
+
+    <article class="portrait">
+    <figure class="portrait__media frame reveal reveal--left" data-src="assets/img3.jpg">
+        <img src="assets/img3.jpg" alt="">
+    </figure>
+    <div class="portrait__copy reveal reveal--right">
+        <h3 class="portrait__title">beautiful in her own little world</h3>
+        <p class="portrait__text">these are the moments when she's still sleepy, her hair might be a little messy, and she's not trying to look a certain way. yet, to me, there's a quiet kind of beauty in seeing her like this. she doesn't need makeup, a carefully chosen outfit, or perfect lighting to look lovely. there's a softness in these unfiltered moments that makes them feel genuine. while she might see nothing more than a quick photo taken after waking up, didn't know someone could look beautiful without having to put in any effort at all.</p>
+    </div>
+    </article>
+
+    <article class="portrait portrait--flip">
+    <figure class="portrait__media frame reveal reveal--right" data-src="assets/img4.jpg">
+        <img src="assets/img4.jpg" alt="">
+    </figure>
+    <div class="portrait__copy reveal reveal--left">
+        <h3 class="portrait__title">effortlessly stunning</h3>
+        <p class="portrait__text">and then there are the pictures where she looks absolutely stunning, the kind that make you pause for a moment just to admire her. she knows how to put an outfit together, carry herself with confidence, and make a photograph look like it belongs in a magazine. every detail seems to come together in a way that brings out another side of her. but what makes these pictures meaningful to me goes beyond her appearance.</p>
+    </div>
+    </article>
+    
+    <article class="portrait portrait--flip">
+    <figure class="portrait__media frame reveal reveal--right" data-src="assets/img5.jpg">
+        <img src="assets/img5.jpg" alt="">
+    </figure>
+    <div class="portrait__copy reveal reveal--left">
+        <h3 class="portrait__title">the girl who brings me closer to God</h3>
+        <p class="portrait__text">she has a faith that means so much to her, and one of the things i'll always be thankful for is how she introduced me to God in a way that made me want to know him more, too. through her faith, she has helped me see the importance of having a relationship with God and making room for him in my life. it's something i never want to take for granted, because she didn't just become someone special in my life. she also became part of my journey in faith.</p>
+    </div>
+    </article>
+
+    <article class="portrait portrait--flip">
+     <figure class="portrait__media frame reveal reveal--right" data-src="assets/last.png">
+        <img src="assets/last.png" alt="">
+    </figure>
+    <div class="portrait__copy reveal reveal--left">
+        <h3 class="portrait__title">stronger than the world knows</h3>
+        <p class="portrait__text">there's a side of her that not everyone gets to know. to many people, she's the funny girl, the cheerful one, the person who can make others laugh and brighten an ordinary day. she's someone people might associate with happiness because that's the version of her they see most often. but there's so much more to her than her laughter and jokes. behind that lively personality is a person with her own worries, difficult days, and battles she may never fully explain to the people around her.
+
+she carries experiences that have shaped the person she is today. there are days when life asks more of her than anyone realizes, yet she continues finding her way forward. not every struggle is visible, and not every difficult moment comes with an explanation. sometimes, people see the laughter without knowing what it took for someone to find a reason to smile that day. her story deserves to be understood beyond the cheerful personality everyone has grown familiar with.
+
+what makes her strong isn't that she's never tired or that she can handle everything on her own. it's that she's human, facing her own struggles while continuing to grow through them. she deserves to have difficult days without feeling the need to hide them, and she deserves the same patience and kindness she gives to others.
+
+i hope people learn to see beyond the smiles and jokes, because she deserves to be appreciated not only for the happiness she brings but also for the person she is when no one's watching. she doesn't have to be strong every day to be someone worth admiring.
+
+to me, she's more than the girl who makes people laugh. she's someone with a story deeper than most people know, a heart that deserves gentleness, and a strength that doesn't always need to be seen to be real.</p>
+    </div>
+    </article>
+
+</div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="footer">
+<p class="footer__tagline">Happy Birthday, My Love</p>
+<p class="footer__note">Made with all my love, today and always.</p>
+<p class="footer__note">-timothy</p>
+</footer>
+
+</main>
+
+<!-- LOVE LETTER MODAL -->
+<div class="love-modal" id="loveModal" role="dialog" aria-modal="true" aria-labelledby="loveTitle">
+<div class="love-card">
+    <button class="love-close" id="loveClose" aria-label="Close letter">&times;</button>
+    <span class="love-card__heart" aria-hidden="true"></span>
+    <p class="love-card__count" id="loveCount"></p>
+    <h3 class="love-card__title" id="loveTitle"></h3>
+    <p class="love-card__text" id="loveText"></p>
+</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+<button class="lightbox__close" aria-label="Close image">&times;</button>
+<button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous picture">&#8249;</button>
+<img id="lightboxImg" src="" alt="">
+<button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next picture">&#8250;</button>
+<p class="lightbox__caption" id="lightboxCaption"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
